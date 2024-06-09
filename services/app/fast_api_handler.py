@@ -20,13 +20,13 @@ class FastApiHandler:
             "model_params": dict
         }
 
-        self.model_path = "models/pipeline.bin"
+        self.model_path = "models/model_cb.bin"
         self.load_real_estate_model(model_path=self.model_path)
         
         # Необходимые параметры для предсказаний модели оттока
         self.required_model_params = [
-            'floor', 'is_apartment', 'kitchen_area', 'living_area', 'rooms', 'total_area',
-            'build_year', 'building_type_int', 'latitude', 'longitude', 'flats_count', 'floors_total', 'has_elevator'
+            'floor', 'is_apartment', 'kitchen_area', 'living_area', 'rooms',  'studio', 'total_area',
+            'build_year', 'building_type_int', 'latitude', 'longitude', 'ceiling_height', 'flats_count', 'floors_total', 'has_elevator'
         ]
 
     def load_real_estate_model(self, model_path: str):
@@ -149,11 +149,13 @@ if __name__ == "__main__":
             "kitchen_area": 9.9,
             "living_area": 19.9,
             "rooms": 0.0,
+            "studio": 0,
             "total_area": 35.099998,
             "build_year": 1965,
             "building_type_int": 6,
             "latitude": 55.717113,
             "longitude": 37.781120,
+            "ceiling_height": 3.0,
             "flats_count": 84,
             "floors_total": 12,
             "has_elevator": 1

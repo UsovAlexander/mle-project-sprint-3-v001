@@ -13,13 +13,13 @@ def load_real_estate_model(model_path: str):
     try:
         print("Start model loading")
         with open(model_path, 'rb') as file:
-            pipeline = dill.load(file)
+            model = dill.load(file)
         print("Model loaded successfully")
     except Exception as e:
         print(f"Failed to load model: {e}")
-    return pipeline
+    return model
 
 
 if __name__ == "__main__":
-    pipeline = load_real_estate_model(model_path="models/pipeline.pkl")
-    print(f"Model parameter names: {pipeline[0].feature_names_in_}")
+    model = load_real_estate_model(model_path="models/model_cb.bin")
+    print(f"Model parameter names: {model.feature_names_}")
