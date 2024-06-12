@@ -167,4 +167,4 @@ if __name__ == "__main__":
 
     # Делаем тестовый запрос
     response = handler.handle(test_params)
-    print(f"Response: {response}")
+    print(f"Response: {response['price']}")
