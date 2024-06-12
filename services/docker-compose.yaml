@@ -1,0 +1,39 @@
+services:
+  real_estate-app:  
+    env_file:
+      - ./.env
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - "${APP_VM_PORT}:${APP_DOCKER_PORT}"
+    #
+    # указываем тома
+    volumes:
+        # тип тома 
+      - type: bind
+        # директроия на ВМ
+        source: ./models
+        # директория в контейнере
+        target: /real_estate_app/models
+
+    hostname: fastapi_app
+
+  prometheus:
+    image: prom/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - 9090:9090
+    volumes:
+      - "./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml"
+    hostname: prometheus 
+
+  grafana:
+        image: grafana/grafana
+        env_file:
+        - ./.env
+        ports:
+        - 3000:3000
+        environment:
+        - GF_SECURITY_ADMIN_USER=${GRAFANA_USER}
+        - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASS}

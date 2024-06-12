@@ -44,3 +44,13 @@ docker container run --publish 4601:8081 --volume=./models:/real_estate_app/mode
 docker container run --publish 4601:8081 -d --volume=./models:/real_estate_app/models   --env-file .env real_estate:1
 
 Для остановки контейнера найдите ID или name контейнера через команду docker ps, затем введите docker stop (ID или name)
+
+Чтобы запустить контейнер с помощью docker-compose воспользуйтесь следующей командой:
+
+docker compose up --build -d
+
+Для остановки контейнера используйте docker compose stop (name)
+Для удаления контейнера docker compose down
+
+Чтобы зайти на страницу Prometheus воспользуйтесь ссылкой http://localhost:9090/targets
+Чтобы зайти в веб-интерфейс Grafana http://localhost:3000/
