@@ -1,7 +1,7 @@
 """FastAPI-приложение для модели оттока."""
 
 from fastapi import FastAPI, Body
-from .fast_api_handler import FastApiHandler
+from fast_api_handler import FastApiHandler
 from fastapi.responses import PlainTextResponse
 from prometheus_fastapi_instrumentator import Instrumentator
 from prometheus_client import Histogram
