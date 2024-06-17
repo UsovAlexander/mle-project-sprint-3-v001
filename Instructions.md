@@ -38,19 +38,19 @@ Request body:
 ### 2. FastAPI микросервис в Docker-контейнере
 Чтобы запустить контейнер из директории /services необходимо запустить следующую команду:
 если вы находитесь в корневой директории 
-
+```
 docker container run --publish 8081:8081 --volume=./models:/real_estate_app/models   --env-file .env real_estate:1
-
+```
 либо в фоновом режиме:
-
+```
 docker container run --publish 8081:8081 -d --volume=./models:/real_estate_app/models   --env-file .env real_estate:1
-
+```
 Для остановки контейнера найдите ID или name контейнера через команду docker ps, затем введите docker stop (ID или name)
 
 Чтобы запустить контейнер с помощью docker-compose воспользуйтесь следующей командой:
-
+```
 docker compose up --build -d
-
+```
 Для остановки контейнера используйте docker compose stop (name)
 Для удаления контейнера docker compose down
 
