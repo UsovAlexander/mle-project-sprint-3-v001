@@ -4,8 +4,7 @@ from fastapi import FastAPI, Body
 from .fast_api_handler import FastApiHandler
 from fastapi.responses import PlainTextResponse
 from prometheus_fastapi_instrumentator import Instrumentator
-from prometheus_client import Histogram
-from prometheus_client import Counter
+from prometheus_client import Histogram, Counter
 
 """
 Пример запуска из директории mle-project-sprint-3-v001/services/app:
@@ -29,7 +28,7 @@ real_estate_app_predictions = Histogram(
     #описание метрики
     "Histogram of predictions",
     #указаываем корзины для гистограммы
-    buckets=(1, 2, 4, 5, 10)
+    buckets=(500000, 1000000, 2000000, 3000000, 5000000)
 )
 
 real_estate_app_counter_pos = Counter("real_estate_app_counter_pos", "Count of positive predictions")

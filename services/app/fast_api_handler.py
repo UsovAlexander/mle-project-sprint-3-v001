@@ -3,9 +3,13 @@
 
 import dill
 import pandas as pd
-from sklearn.pipeline import Pipeline, FunctionTransformer
-from sklearn.preprocessing import StandardScaler, PolynomialFeatures, KBinsDiscretizer
-from catboost import CatBoostClassifier
+
+MODEL_PATH = "models/model_cb.bin"
+
+REQUIRED_MODEL_PARAMS = [
+            'floor', 'is_apartment', 'kitchen_area', 'living_area', 'rooms',  'studio', 'total_area',
+            'build_year', 'building_type_int', 'latitude', 'longitude', 'ceiling_height', 'flats_count', 'floors_total', 'has_elevator'
+        ]
 
 
 class FastApiHandler:
@@ -20,14 +24,11 @@ class FastApiHandler:
             "model_params": dict
         }
 
-        self.model_path = "models/model_cb.bin"
+        self.model_path = MODEL_PATH
         self.load_real_estate_model(model_path=self.model_path)
         
         # Необходимые параметры для предсказаний модели оттока
-        self.required_model_params = [
-            'floor', 'is_apartment', 'kitchen_area', 'living_area', 'rooms',  'studio', 'total_area',
-            'build_year', 'building_type_int', 'latitude', 'longitude', 'ceiling_height', 'flats_count', 'floors_total', 'has_elevator'
-        ]
+        self.required_model_params = REQUIRED_MODEL_PARAMS
 
     def load_real_estate_model(self, model_path: str):
         """Загружаем обученную модель оттока.
